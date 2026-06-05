@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>MisiQC Pro</title>
+    <link>https://www.misiraca.com/misiqc-pro/</link>
+    <description>Mises à jour de MisiQC Pro</description>
+    <language>fr</language>
+
+    <item>
+      <title>Version 1.0.0</title>
+      <pubDate>Fri, 05 Jun 2026 23:30:00 +0200</pubDate>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h3>MisiQC Pro 1.0.0 — première release publique 🎬</h3>
+        <ul>
+          <li>72 profils chaînes (France TV, BBC, Netflix, Amazon, Disney+, …)</li>
+          <li>30+ contrôles techniques automatisés (EBU R128, GOP, color range, PSE, …)</li>
+          <li>Rapport PDF, export CSV, guide de correction PDF</li>
+          <li>Interface FR / EN / ES</li>
+          <li>Licence à vie + mises à jour gratuites</li>
+        </ul>
+      ]]></description>
+      <enclosure
+        url="https://github.com/misilab/misiqcpro/releases/download/v1.0.0/MisiQC-Pro-1.0.0.zip"
+        sparkle:edSignature="oe9wxzCM19dEJVhK1efOZP1Kb+oWL2lziVKU/85TARZz8jKaunI2fgw4ZrjvGdZjRNv0vCgfP6TCDDNNsmGCCQ=="
+        length="56923375"
+        type="application/octet-stream" />
+    </item>
+
+  </channel>
+</rss>

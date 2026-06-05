@@ -1,0 +1,80 @@
+{
+  "id": "dpp",
+  "name": "DPP AS-11 (UK)",
+  "specVersion": "DPP UK TV Delivery v1.1 — AS-11 X1",
+  "documentReference": "Digital Production Partnership AS-11 UK DPP HD — BBC / ITV / Channel 4 / Sky / Channel 5",
+  "confidence": "standard",
+  "video": {
+    "container": "mxf",
+    "operationalPattern": "OP1a",
+    "shim": "AMWA AS-11 X1 (UK DPP HD)",
+    "codec": "h264",
+    "profile": "High 4:2:2 Intra (AVC-Intra 100)",
+    "resolution": {
+      "width": 1920,
+      "height": 1080
+    },
+    "framerate": {
+      "num": 25,
+      "den": 1
+    },
+    "interlaced": true,
+    "fieldOrder": "tt",
+    "bitrate": {
+      "value": 100000000,
+      "tolerance": 5000000
+    },
+    "bitrateMode": "CBR",
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "colorTransfer": "bt709",
+    "colorRange": "tv",
+    "aspectRatio": "16:9"
+  },
+  "audio": {
+    "codec": "pcm_s24le",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      4,
+      16
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft",
+          "note": "Programme Stereo - L"
+        },
+        {
+          "index": 2,
+          "role": "vfRight",
+          "note": "Programme Stereo - R"
+        },
+        {
+          "index": 3,
+          "role": "silence",
+          "note": "M&E - L (optional)"
+        },
+        {
+          "index": 4,
+          "role": "silence",
+          "note": "M&E - R (optional)"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -23.0,
+      "tolerance": 1.0
+    },
+    "maxTruePeak": -3.0,
+    "maxLRA": 20.0
+  },
+  "structure": {
+    "timecodeStart": "10:00:00:00",
+    "dropFrame": false,
+    "noSlateAllowed": true
+  }
+}

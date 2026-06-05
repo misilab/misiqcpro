@@ -1,0 +1,76 @@
+{
+  "id": "channel4",
+  "name": "Channel 4",
+  "specVersion": "DPP AS-11 X1 (C4)",
+  "documentReference": "Channel 4 Technical Delivery Standards (DPP)",
+  "confidence": "generic",
+  "video": {
+    "container": "mxf",
+    "operationalPattern": "OP1a",
+    "shim": "AMWA AS-11 X1 UK DPP HD",
+    "codec": "h264",
+    "profile": "High 4:2:2 Intra (AVC-Intra 100)",
+    "resolution": {
+      "width": 1920,
+      "height": 1080
+    },
+    "framerate": {
+      "num": 25,
+      "den": 1
+    },
+    "interlaced": true,
+    "fieldOrder": "tt",
+    "bitrate": {
+      "value": 100000000,
+      "tolerance": 5000000
+    },
+    "bitrateMode": "CBR",
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "colorTransfer": "bt709",
+    "colorRange": "tv",
+    "aspectRatio": "16:9"
+  },
+  "audio": {
+    "codec": "pcm_s24le",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      4,
+      16
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        },
+        {
+          "index": 3,
+          "role": "silence"
+        },
+        {
+          "index": 4,
+          "role": "silence"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -23.0,
+      "tolerance": 1.0
+    },
+    "maxTruePeak": -3.0,
+    "maxLRA": 20.0
+  },
+  "structure": {
+    "timecodeStart": "10:00:00:00",
+    "dropFrame": false,
+    "noSlateAllowed": true
+  }
+}

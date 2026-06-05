@@ -1,0 +1,98 @@
+{
+  "id": "france24",
+  "name": "France 24",
+  "specVersion": "FMM Tech Spec (2023)",
+  "documentReference": "France Médias Monde — Spécifications de livraison",
+  "confidence": "generic",
+  "video": {
+    "container": "mxf",
+    "operationalPattern": "OP1a",
+    "shim": "RDD9 / CST RT-040",
+    "codec": "mpeg2video",
+    "profile": "422P@HL (XDCAM HD422)",
+    "resolution": {
+      "width": 1920,
+      "height": 1080
+    },
+    "framerate": {
+      "num": 25,
+      "den": 1
+    },
+    "interlaced": true,
+    "fieldOrder": "tt",
+    "bitrate": {
+      "value": 50000000,
+      "tolerance": 2000000
+    },
+    "bitrateMode": "CBR",
+    "gopSize": 12,
+    "gopClosed": true,
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "colorTransfer": "bt709",
+    "colorRange": "tv",
+    "aspectRatio": "16:9"
+  },
+  "audio": {
+    "codec": "pcm_s24le",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      4,
+      8,
+      16
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        },
+        {
+          "index": 3,
+          "role": "silence"
+        },
+        {
+          "index": 4,
+          "role": "silence"
+        }
+      ],
+      "VF+VO": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        },
+        {
+          "index": 3,
+          "role": "voLeft",
+          "note": "VO (anglais/arabe/espagnol)"
+        },
+        {
+          "index": 4,
+          "role": "voRight"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -23.0,
+      "tolerance": 1.0
+    },
+    "maxTruePeak": -3.0,
+    "maxLRA": 20.0
+  },
+  "structure": {
+    "timecodeStart": "00:00:00:00",
+    "dropFrame": false,
+    "noSlateAllowed": true
+  }
+}

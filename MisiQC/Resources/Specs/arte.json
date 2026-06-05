@@ -1,0 +1,144 @@
+{
+  "id": "arte",
+  "name": "ARTE G.E.I.E.",
+  "specVersion": "Consignes Techniques v2-01-00 (12-2025)",
+  "documentReference": "Consignes Techniques Globales ARTE G.E.I.E. — applicable au 01/01/2026",
+  "confidence": "verified",
+  "video": {
+    "container": "mxf",
+    "operationalPattern": "OP1a",
+    "shim": "SMPTE ST 377-1:2019 / SMPTE RDD 32:2017 (XAVC)",
+    "codec": "h264",
+    "profile": "High 4:2:2 Intra (XAVC HD Class 100 / 4K Class 300)",
+    "acceptedResolutions": [
+      {
+        "width": 3840,
+        "height": 2160
+      },
+      {
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "acceptedFramerates": [
+      {
+        "num": 25,
+        "den": 1
+      },
+      {
+        "num": 50,
+        "den": 1
+      }
+    ],
+    "interlaced": false,
+    "fieldOrder": "progressive",
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "colorTransfer": "bt709",
+    "colorRange": "tv",
+    "aspectRatio": "16:9"
+  },
+  "audio": {
+    "codec": "pcm_s24le",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        }
+      ],
+      "VF+VO": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        },
+        {
+          "index": 3,
+          "role": "voLeft"
+        },
+        {
+          "index": 4,
+          "role": "voRight"
+        }
+      ],
+      "VF+AD": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        },
+        {
+          "index": 3,
+          "role": "adLeft"
+        },
+        {
+          "index": 4,
+          "role": "adRight"
+        }
+      ],
+      "VF+VO+AD": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        },
+        {
+          "index": 3,
+          "role": "voLeft"
+        },
+        {
+          "index": 4,
+          "role": "voRight"
+        },
+        {
+          "index": 5,
+          "role": "adLeft"
+        },
+        {
+          "index": 6,
+          "role": "adRight"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -23.0,
+      "tolerance": 1.0
+    },
+    "maxTruePeak": -1.0,
+    "maxLRA": 20.0,
+    "maxShortTerm": -20.0
+  },
+  "structure": {
+    "timecodeStart": "10:00:00:00",
+    "dropFrame": false,
+    "noSlateAllowed": true
+  }
+}

@@ -6,13 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D836B87D2FD37BDD0036A855 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D836B87C2FD37BDD0036A855 /* Sparkle */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		D8A8E54E2FD2103F00F156E0 /* MisiQC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MisiQC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D836B87F2FD37C560036A855 /* Exceptions for "MisiQC" folder in "MisiQC" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D8A8E54D2FD2103F00F156E0 /* MisiQC */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D8A8E5502FD2103F00F156E0 /* MisiQC */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D836B87F2FD37C560036A855 /* Exceptions for "MisiQC" folder in "MisiQC" target */,
+			);
 			path = MisiQC;
 			sourceTree = "<group>";
 		};
@@ -23,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D836B87D2FD37BDD0036A855 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +83,7 @@
 			);
 			name = MisiQC;
 			packageProductDependencies = (
+				D836B87C2FD37BDD0036A855 /* Sparkle */,
 			);
 			productName = MisiQC;
 			productReference = D8A8E54E2FD2103F00F156E0 /* MisiQC.app */;
@@ -94,6 +113,9 @@
 			);
 			mainGroup = D8A8E5452FD2103F00F156E0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D836B87B2FD37BDD0036A855 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D8A8E54F2FD2103F00F156E0 /* Products */;
 			projectDirPath = "";
@@ -252,18 +274,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = SM6L2XLUBA;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MisiQC/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Misi QC Pro";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.misilab.MisiQC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -284,18 +308,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = SM6L2XLUBA;
-				ENABLE_APP_SANDBOX = YES;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MisiQC/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Misi QC Pro";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.misilab.MisiQC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -331,6 +357,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D836B87B2FD37BDD0036A855 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D836B87C2FD37BDD0036A855 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D836B87B2FD37BDD0036A855 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D8A8E5462FD2103F00F156E0 /* Project object */;
 }

@@ -1,0 +1,84 @@
+{
+  "id": "abc",
+  "name": "ABC",
+  "specVersion": "Disney/ABC Tech Specs 2024",
+  "documentReference": "Disney/ABC Network Delivery",
+  "confidence": "generic",
+  "video": {
+    "acceptedContainers": [
+      "mxf",
+      "mov"
+    ],
+    "operationalPattern": "MXF OP1a / ProRes MOV",
+    "shim": "Apple ProRes 422 HQ / XDCAM HD422",
+    "acceptedCodecs": [
+      "prores",
+      "mpeg2video"
+    ],
+    "profile": "ProRes 422 HQ ou XDCAM HD422",
+    "acceptedResolutions": [
+      {
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "width": 1280,
+        "height": 720
+      }
+    ],
+    "acceptedFramerates": [
+      {
+        "num": 24000,
+        "den": 1001
+      },
+      {
+        "num": 30000,
+        "den": 1001
+      },
+      {
+        "num": 60000,
+        "den": 1001
+      }
+    ],
+    "interlaced": false,
+    "fieldOrder": "progressive",
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "colorTransfer": "bt709",
+    "colorRange": "tv",
+    "aspectRatio": "16:9"
+  },
+  "audio": {
+    "codec": "pcm_s24le",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      2,
+      8
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -24.0,
+      "tolerance": 2.0
+    },
+    "maxTruePeak": -2.0
+  },
+  "structure": {
+    "timecodeStart": "01:00:00:00",
+    "dropFrame": true,
+    "noSlateAllowed": true
+  }
+}

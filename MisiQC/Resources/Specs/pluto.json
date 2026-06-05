@@ -1,0 +1,95 @@
+{
+  "id": "pluto",
+  "name": "Pluto TV",
+  "specVersion": "Pluto TV Delivery Spec 2024 (AVOD)",
+  "documentReference": "Pluto TV / Paramount",
+  "confidence": "generic",
+  "video": {
+    "acceptedContainers": [
+      "mxf",
+      "mov"
+    ],
+    "operationalPattern": "IMF Application 2E / ProRes 422 HQ",
+    "shim": "SMPTE ST 2067-21 (IMF) ou ProRes 422 HQ",
+    "acceptedCodecs": [
+      "jpeg2000",
+      "j2k",
+      "prores"
+    ],
+    "profile": "ProRes 422 HQ ou IMF Application 2E",
+    "acceptedResolutions": [
+      {
+        "width": 3840,
+        "height": 2160
+      },
+      {
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "acceptedFramerates": [
+      {
+        "num": 24000,
+        "den": 1001
+      },
+      {
+        "num": 24,
+        "den": 1
+      },
+      {
+        "num": 25,
+        "den": 1
+      },
+      {
+        "num": 30000,
+        "den": 1001
+      },
+      {
+        "num": 30,
+        "den": 1
+      }
+    ],
+    "interlaced": false,
+    "fieldOrder": "progressive",
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "acceptedColorTransfers": [
+      "bt709",
+      "smpte2084"
+    ],
+    "colorRange": "tv",
+    "aspectRatio": "16:9"
+  },
+  "audio": {
+    "codec": "pcm_s24le",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      2,
+      6,
+      8
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -24.0,
+      "tolerance": 2.0
+    },
+    "maxTruePeak": -2.0
+  },
+  "structure": {
+    "noSlateAllowed": true
+  }
+}

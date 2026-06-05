@@ -1,0 +1,127 @@
+{
+  "id": "vimeo",
+  "name": "Vimeo",
+  "specVersion": "Compression Guidelines 2024",
+  "documentReference": "Vimeo Help — Compression guidelines for uploading",
+  "confidence": "standard",
+  "video": {
+    "acceptedContainers": [
+      "mov",
+      "mp4"
+    ],
+    "operationalPattern": "MOV / MP4",
+    "shim": "Vimeo Compression Guidelines",
+    "acceptedCodecs": [
+      "h264",
+      "hevc",
+      "prores",
+      "dnxhr",
+      "dnxhd"
+    ],
+    "profile": "H.264 High Profile / ProRes 422 HQ",
+    "acceptedResolutions": [
+      {
+        "width": 7680,
+        "height": 4320
+      },
+      {
+        "width": 4096,
+        "height": 2160
+      },
+      {
+        "width": 3840,
+        "height": 2160
+      },
+      {
+        "width": 2560,
+        "height": 1440
+      },
+      {
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "width": 1280,
+        "height": 720
+      }
+    ],
+    "acceptedFramerates": [
+      {
+        "num": 24000,
+        "den": 1001
+      },
+      {
+        "num": 24,
+        "den": 1
+      },
+      {
+        "num": 25,
+        "den": 1
+      },
+      {
+        "num": 30000,
+        "den": 1001
+      },
+      {
+        "num": 30,
+        "den": 1
+      },
+      {
+        "num": 50,
+        "den": 1
+      },
+      {
+        "num": 60000,
+        "den": 1001
+      },
+      {
+        "num": 60,
+        "den": 1
+      }
+    ],
+    "interlaced": false,
+    "fieldOrder": "progressive",
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "acceptedColorTransfers": [
+      "bt709",
+      "smpte2084",
+      "arib-std-b67"
+    ],
+    "colorRange": "tv",
+    "aspectRatio": "16:9"
+  },
+  "audio": {
+    "codec": "aac",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      2,
+      6
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft",
+          "note": "Programme principal - L"
+        },
+        {
+          "index": 2,
+          "role": "vfRight",
+          "note": "Programme principal - R"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -16.0,
+      "tolerance": 2.0
+    },
+    "maxTruePeak": -1.0
+  },
+  "structure": {
+    "noSlateAllowed": false
+  }
+}

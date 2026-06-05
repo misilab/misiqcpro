@@ -1,0 +1,85 @@
+{
+  "id": "tiktok",
+  "name": "TikTok",
+  "specVersion": "TikTok Upload Specs 2024",
+  "documentReference": "TikTok / ByteDance — vertical 9:16",
+  "confidence": "generic",
+  "video": {
+    "acceptedContainers": [
+      "mov",
+      "mp4"
+    ],
+    "operationalPattern": "MP4 vertical",
+    "shim": "Vertical 9:16 social",
+    "acceptedCodecs": [
+      "h264",
+      "hevc"
+    ],
+    "profile": "H.264 High Profile",
+    "acceptedResolutions": [
+      {
+        "width": 1080,
+        "height": 1920
+      },
+      {
+        "width": 720,
+        "height": 1280
+      }
+    ],
+    "acceptedFramerates": [
+      {
+        "num": 24,
+        "den": 1
+      },
+      {
+        "num": 25,
+        "den": 1
+      },
+      {
+        "num": 30,
+        "den": 1
+      },
+      {
+        "num": 60,
+        "den": 1
+      }
+    ],
+    "interlaced": false,
+    "fieldOrder": "progressive",
+    "colorSpace": "bt709",
+    "colorPrimaries": "bt709",
+    "colorTransfer": "bt709",
+    "colorRange": "tv",
+    "aspectRatio": "9:16"
+  },
+  "audio": {
+    "codec": "aac",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "acceptedTrackCounts": [
+      2
+    ],
+    "channelMapping": {
+      "VF": [
+        {
+          "index": 1,
+          "role": "vfLeft"
+        },
+        {
+          "index": 2,
+          "role": "vfRight"
+        }
+      ]
+    }
+  },
+  "loudness": {
+    "integratedTarget": {
+      "value": -14.0,
+      "tolerance": 1.0
+    },
+    "maxTruePeak": -1.0
+  },
+  "structure": {
+    "noSlateAllowed": false
+  }
+}

@@ -1,0 +1,46 @@
+# =============================================================================
+# MisiQC Pro — .gitignore
+# =============================================================================
+# ⚠  CRITICAL: keep this file accurate. Never commit private keys or license
+#    batches — they let anyone forge licenses or sign fake updates.
+
+# -------------------- SECRETS (never commit) --------------------
+scripts/output/private_key.dat
+scripts/output/sparkle_private_key.dat
+scripts/output/keys.csv
+scripts/output/keys.txt
+
+# -------------------- Build & derived artefacts --------------------
+build/
+DerivedData/
+*.xcarchive
+*.dmg
+*.zip
+.build/
+
+# -------------------- Xcode --------------------
+xcuserdata/
+*.xcuserstate
+*.moved-aside
+*.xcscmblueprint
+*.xccheckout
+
+# -------------------- Swift Package Manager --------------------
+.swiftpm/
+Package.resolved
+
+# -------------------- macOS --------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# -------------------- IDE / Editor --------------------
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# -------------------- Logs --------------------
+*.log
