@@ -301,14 +301,14 @@ y = drawCoverHeader(startY: y)
 
 y = drawSectionHeader("Installation de MisiQC Pro", number: 1, at: y)
 y = drawCard(title: "Étape 1 — Télécharger l'application",
-             body: "Le lien de téléchargement de MisiQC-Pro.zip se trouve dans l'email de confirmation Payhip que vous venez de recevoir.",
+             body: "Rendez-vous sur la page de téléchargement officielle :\n\nhttps://github.com/misilab/misiqcpro/releases/latest\n\nCliquez sur MisiQC-Pro-1.0.0.dmg pour récupérer la dernière version (~61 Mo).",
              atTopY: y, accent: accentBlue)
-y = drawCard(title: "Étape 2 — Déplacer dans Applications",
-             body: "Double-cliquez sur le .zip pour le décompresser, puis glissez MisiQC Pro.app dans le dossier Applications de votre Mac.",
+y = drawCard(title: "Étape 2 — Installer dans Applications",
+             body: "Double-cliquez sur le .dmg téléchargé. Une fenêtre apparaît avec MisiQC Pro à gauche et un raccourci Applications à droite. Glissez l'app dans le raccourci Applications. C'est tout.",
              atTopY: y, accent: accentBlue)
 y = drawCard(title: "Étape 3 — Premier lancement",
-             body: "macOS affichera une alerte de sécurité au premier lancement. Dans le Finder → Applications, faites clic droit sur MisiQC Pro → Ouvrir, puis cliquez à nouveau sur Ouvrir dans la boîte de dialogue. Cette étape est nécessaire une seule fois.",
-             atTopY: y, accent: accentPeach)
+             body: "Ouvrez MisiQC Pro depuis le dossier Applications ou le Launchpad. L'app est notarisée par Apple — aucune alerte bloquante au premier lancement.",
+             atTopY: y, accent: accentMint)
 
 endPage(footerNumber: 1)
 

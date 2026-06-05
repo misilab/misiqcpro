@@ -10,7 +10,7 @@ struct LicenseSettingsView: View {
     @State private var activationMessage: String?
     @State private var activationIsError: Bool = false
 
-    private let purchaseURL = URL(string: "https://payhip.com/MisiQCPro")!
+    private let purchaseURL = URL(string: "https://payhip.com/b/NqSMZ")!
 
     var body: some View {
         Form {

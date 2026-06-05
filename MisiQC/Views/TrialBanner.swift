@@ -7,7 +7,7 @@ struct TrialBanner: View {
     @Environment(\.openURL) private var openURL
 
     /// Public Payhip purchase page — overwrite when the product is live.
-    private let purchaseURL = URL(string: "https://payhip.com/MisiQCPro")!
+    private let purchaseURL = URL(string: "https://payhip.com/b/NqSMZ")!
 
     var body: some View {
         switch state.license.status {
