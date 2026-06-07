@@ -101,12 +101,16 @@ final class LicenseService {
     private struct ValidatedKey { let expiry: Date }
 
     private func validate(_ raw: String) -> Result<ValidatedKey, LicenseError> {
-        let stripped = raw.uppercased()
-            .replacingOccurrences(of: "-", with: "")
-            .replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: "\n", with: "")
-        guard let data = base32Decode(stripped) else { return .failure(.malformedKey) }
-        guard data.count == 74 else { return .failure(.malformedKey) }
+        // Keep only valid base32 characters. This is intentionally tolerant so
+        // that hyphens, regular spaces, \r, \n, NBSP, tabs, zero-width chars
+        // and other paste artefacts from email clients are silently ignored.
+        let stripped = String(raw.uppercased().filter { Self.base32Alphabet.contains($0) })
+        guard let data = base32Decode(stripped) else {
+            return .failure(.malformedKey(actualLength: stripped.count))
+        }
+        guard data.count == 74 else {
+            return .failure(.malformedKey(actualLength: stripped.count))
+        }
         guard data[0] == Self.keyMagic[0], data[1] == Self.keyMagic[1]
             else { return .failure(.unsupportedVersion) }
 
@@ -132,9 +136,7 @@ final class LicenseService {
     // MARK: - Fingerprint (5-char prefix shown in UI & watermark)
 
     private func fingerprint(of rawKey: String) -> String {
-        let cleaned = rawKey.uppercased()
-            .replacingOccurrences(of: "-", with: "")
-            .replacingOccurrences(of: " ", with: "")
+        let cleaned = String(rawKey.uppercased().filter { Self.base32Alphabet.contains($0) })
         return String(cleaned.prefix(5))
     }
 

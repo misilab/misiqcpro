@@ -1119,9 +1119,9 @@ enum L10n {
             .es: "Comprar una licencia"
         ],
         .licenseErrorMalformed: [
-            .fr: "Clé mal formée — vérifiez la copie depuis l'email.",
-            .en: "Malformed key — double-check the paste from your email.",
-            .es: "Clave mal formada — verifica el copiado desde el correo."
+            .fr: "Clé incomplète (%d/%d caractères) — recopiez la clé entière depuis l'email.",
+            .en: "Incomplete key (%d/%d characters) — copy the entire key from your email.",
+            .es: "Clave incompleta (%d/%d caracteres) — copia la clave entera desde el correo."
         ],
         .licenseErrorSignature: [
             .fr: "Signature invalide — cette clé n'est pas valide pour MisiQC Pro.",

@@ -278,7 +278,7 @@ func startNewPage() -> CGFloat {
 }
 
 func endPage(footerNumber: Int) {
-    let appVersion = "1.0"
+    let appVersion = "1.0.2"
     let footer = "MisiQC Pro v\(appVersion) · Guide d'installation · contact@misiraca.com · Page \(footerNumber)"
     let f = NSFont.systemFont(ofSize: 8, weight: .medium)
     let w = (footer as NSString).size(withAttributes: [.font: f]).width
@@ -301,7 +301,7 @@ y = drawCoverHeader(startY: y)
 
 y = drawSectionHeader("Installation de MisiQC Pro", number: 1, at: y)
 y = drawCard(title: "Étape 1 — Télécharger l'application",
-             body: "Rendez-vous sur la page de téléchargement officielle :\n\nhttps://github.com/misilab/misiqcpro/releases/latest\n\nCliquez sur MisiQC-Pro-1.0.0.dmg pour récupérer la dernière version (~61 Mo).",
+             body: "Rendez-vous sur la page de téléchargement officielle :\n\nhttps://github.com/misilab/misiqcpro/releases/latest\n\nCliquez sur le fichier MisiQC-Pro-X.Y.Z.dmg pour récupérer la dernière version (~65 Mo).",
              atTopY: y, accent: accentBlue)
 y = drawCard(title: "Étape 2 — Installer dans Applications",
              body: "Double-cliquez sur le .dmg téléchargé. Une fenêtre apparaît avec MisiQC Pro à gauche et un raccourci Applications à droite. Glissez l'app dans le raccourci Applications. C'est tout.",
@@ -325,7 +325,8 @@ let activationSteps = [
     "Lancez MisiQC Pro.",
     "Menu MisiQC Pro → Réglages… (ou ⌘ ,).",
     "Cliquez sur l'onglet 🔑 Licence.",
-    "Collez votre clé dans le champ « Clé reçue par email ».",
+    "Sélectionnez la clé entière dans votre email (de XXXXX-… jusqu'au dernier groupe, soit 24 groupes au total) puis copiez avec ⌘C.",
+    "Collez (⌘V) dans le champ « Clé reçue par email ». Le compteur sous le champ doit afficher 119 / 119 en vert — sinon votre copier-coller est incomplet.",
     "Cliquez sur Activer."
 ]
 for step in activationSteps {

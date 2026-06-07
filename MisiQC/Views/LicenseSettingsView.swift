@@ -26,7 +26,7 @@ struct LicenseSettingsView: View {
                               text: $draftKey,
                               axis: .vertical)
                         .textFieldStyle(.roundedBorder)
-                        .lineLimit(3...5)
+                        .lineLimit(4...8)
                         .font(.system(size: 11).monospaced())
                         .autocorrectionDisabled()
                     Button(state.t(.licenseActivateButton)) {
@@ -34,6 +34,12 @@ struct LicenseSettingsView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(draftKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                }
+                if !draftKey.isEmpty {
+                    let n = draftKey.uppercased().filter { Self.base32Chars.contains($0) }.count
+                    Text("\(n) / \(LicenseError.expectedKeyLength)")
+                        .font(.caption.monospacedDigit())
+                        .foregroundStyle(n == LicenseError.expectedKeyLength ? .green : .secondary)
                 }
                 if let msg = activationMessage {
                     Text(msg)
@@ -123,11 +129,16 @@ struct LicenseSettingsView: View {
 
     private static func localizedError(_ err: LicenseError, locale: AppLocale) -> String {
         switch err {
-        case .malformedKey:        return L10n.t(.licenseErrorMalformed, locale)
+        case .malformedKey(let n):
+            return String(format: L10n.t(.licenseErrorMalformed, locale),
+                          n, LicenseError.expectedKeyLength)
         case .invalidSignature:    return L10n.t(.licenseErrorSignature, locale)
         case .keyExpired(let d):   return String(format: L10n.t(.licenseErrorExpired, locale),
                                                  shortDate(d))
         case .unsupportedVersion:  return L10n.t(.licenseErrorUnsupported, locale)
         }
     }
+
+    private static let base32Chars: Set<Character> =
+        Set("ABCDEFGHIJKLMNOPQRSTUVWXYZ234567")
 }
