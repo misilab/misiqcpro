@@ -278,7 +278,7 @@ func startNewPage() -> CGFloat {
 }
 
 func endPage(footerNumber: Int) {
-    let appVersion = "1.0.2"
+    let appVersion = "1.0.3"
     let footer = "MisiQC Pro v\(appVersion) · Guide d'installation · contact@misiraca.com · Page \(footerNumber)"
     let f = NSFont.systemFont(ofSize: 8, weight: .medium)
     let w = (footer as NSString).size(withAttributes: [.font: f]).width
@@ -318,15 +318,15 @@ y -= margin
 y = drawSectionHeader("Activer votre licence à vie 🔑", number: 2, at: y)
 
 y = drawCard(title: nil,
-             body: "Votre clé de licence vous a été envoyée par email après votre achat sur Payhip. Elle ressemble à : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX-…-XXXXX",
+             body: "Votre clé de licence vous a été envoyée par email après votre achat sur Payhip. Elle ressemble à : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX-XXXXX-XXXXX-XXXXX (8 groupes de 5 caractères, soit 47 caractères au total).",
              atTopY: y, accent: accentMint)
 
 let activationSteps = [
     "Lancez MisiQC Pro.",
     "Menu MisiQC Pro → Réglages… (ou ⌘ ,).",
     "Cliquez sur l'onglet 🔑 Licence.",
-    "Sélectionnez la clé entière dans votre email (de XXXXX-… jusqu'au dernier groupe, soit 24 groupes au total) puis copiez avec ⌘C.",
-    "Collez (⌘V) dans le champ « Clé reçue par email ». Le compteur sous le champ doit afficher 119 / 119 en vert — sinon votre copier-coller est incomplet.",
+    "Copiez la clé entière depuis l'email (⌘C).",
+    "Collez (⌘V) dans le champ « Clé reçue par email ». Le compteur sous le champ doit afficher 40 / 40 en vert.",
     "Cliquez sur Activer."
 ]
 for step in activationSteps {

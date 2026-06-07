@@ -3,15 +3,16 @@ import CryptoKit
 import Observation
 
 /// Owns the licence + trial state and persists it across launches.
-/// Verifies licence keys offline using an embedded Ed25519 public key.
+/// Verifies licence keys offline using an embedded HMAC-SHA256 secret.
 ///
-/// Key format (74 bytes total, encoded as base32 RFC 4648 with hyphens):
-///   • [0..1]   "M1" magic (0x4D 0x31)
+/// Key format M2 (25 bytes total, encoded as base32 RFC 4648 with hyphens,
+/// final string is 47 characters = 8 groups of 5 separated by `-`):
+///   • [0..1]   "M2" magic (0x4D 0x32)
 ///   • [2..5]   Expiry: UInt32 BE = days since 2025-01-01
-///   • [6..9]   Random nonce (UInt32 BE, anti-replay)
-///   • [10..73] Ed25519 signature of bytes [0..9]
+///   • [6..8]   Random nonce (3 bytes — uniqueness across the batch)
+///   • [9..24]  HMAC-SHA256(payload[0..8]) truncated to 16 bytes
 ///
-/// The private key lives only on the seller's machine (scripts/output/).
+/// The HMAC secret lives only on the seller's machine (scripts/output/).
 @Observable
 @MainActor
 final class LicenseService {
@@ -27,12 +28,12 @@ final class LicenseService {
 
     static let trialLengthDays = 7
 
-    /// Embedded Ed25519 public key — produced by `scripts/generate_keys.swift`.
-    /// MUST match the private key used to sign distributed licence keys.
-    /// Replace this hex string after running the generator on a different key
-    /// pair (you should never need to — keep the same key pair across versions).
-    private static let publicKeyHex =
-        "e5ecd292d47453def51632be0f1a7dce1c6188dc67c9453d43f3a91cb87d1546"
+    /// Embedded HMAC-SHA256 secret — produced by `scripts/generate_keys.swift`.
+    /// MUST match the secret used to sign distributed licence keys.
+    /// Replace this hex string after regenerating the secret (you generally
+    /// should never need to — keep the same secret across versions).
+    private static let hmacSecretHex =
+        "e40566d46e424147408eb2f88b8dc4bcb5453db3956331a37e9bea2341d0bfb9"
 
     /// Reference date used by the generator + verifier — must stay in sync
     /// with `scripts/generate_keys.swift`.
@@ -42,7 +43,10 @@ final class LicenseService {
         return Calendar(identifier: .iso8601).date(from: c)!
     }()
 
-    private static let keyMagic: [UInt8] = [0x4D, 0x31]
+    private static let keyMagic: [UInt8] = [0x4D, 0x32]   // "M2"
+    private static let payloadSize = 9                    // magic + expiry + nonce
+    private static let macSize     = 16                   // truncated HMAC
+    private static let keySize     = 25                   // 9 + 16
     private static let keychainAccount = "license_key"
     private static let firstLaunchKey = "license.firstLaunchDate"
 
@@ -101,36 +105,47 @@ final class LicenseService {
     private struct ValidatedKey { let expiry: Date }
 
     private func validate(_ raw: String) -> Result<ValidatedKey, LicenseError> {
-        // Keep only valid base32 characters. This is intentionally tolerant so
-        // that hyphens, regular spaces, \r, \n, NBSP, tabs, zero-width chars
-        // and other paste artefacts from email clients are silently ignored.
+        // Keep only valid base32 characters. Tolerant of hyphens, whitespace,
+        // \r, NBSP, tabs, zero-width chars and other paste artefacts.
         let stripped = String(raw.uppercased().filter { Self.base32Alphabet.contains($0) })
         guard let data = base32Decode(stripped) else {
             return .failure(.malformedKey(actualLength: stripped.count))
         }
-        guard data.count == 74 else {
+        guard data.count == Self.keySize else {
             return .failure(.malformedKey(actualLength: stripped.count))
         }
-        guard data[0] == Self.keyMagic[0], data[1] == Self.keyMagic[1]
-            else { return .failure(.unsupportedVersion) }
+        guard data[0] == Self.keyMagic[0], data[1] == Self.keyMagic[1] else {
+            return .failure(.unsupportedVersion)
+        }
 
-        let payload = data.prefix(10)
-        let signature = data.suffix(64)
+        let payload = data.prefix(Self.payloadSize)
+        let receivedMac = data.suffix(Self.macSize)
 
-        guard let pubKeyBytes = Self.hexToBytes(Self.publicKeyHex),
-              let pubKey = try? Curve25519.Signing.PublicKey(rawRepresentation: pubKeyBytes)
-        else { return .failure(.invalidSignature) }
-
-        guard pubKey.isValidSignature(signature, for: payload) else {
+        guard let secretBytes = Self.hexToBytes(Self.hmacSecretHex) else {
+            return .failure(.invalidSignature)
+        }
+        let key = SymmetricKey(data: secretBytes)
+        let expectedFull = HMAC<SHA256>.authenticationCode(for: payload, using: key)
+        let expectedMac = Data(expectedFull).prefix(Self.macSize)
+        guard Self.constantTimeEqual(receivedMac, expectedMac) else {
             return .failure(.invalidSignature)
         }
 
-        // Decode expiry days.
+        // Decode expiry days (bytes 2..5, big-endian UInt32).
         let expiryBytes = data[2..<6]
         let expiryDays = expiryBytes.reduce(UInt32(0)) { ($0 << 8) | UInt32($1) }
         let expiry = Self.referenceDate.addingTimeInterval(TimeInterval(expiryDays) * 86_400)
         if expiry < Date() { return .failure(.keyExpired(expiry)) }
         return .success(ValidatedKey(expiry: expiry))
+    }
+
+    /// Constant-time byte comparison to avoid timing leaks during HMAC check.
+    private static func constantTimeEqual<A: Collection, B: Collection>(_ a: A, _ b: B)
+        -> Bool where A.Element == UInt8, B.Element == UInt8 {
+        guard a.count == b.count else { return false }
+        var diff: UInt8 = 0
+        for (x, y) in zip(a, b) { diff |= (x ^ y) }
+        return diff == 0
     }
 
     // MARK: - Fingerprint (5-char prefix shown in UI & watermark)

@@ -37,7 +37,7 @@ enum LicenseError: LocalizedError {
     case keyExpired(Date)
     case unsupportedVersion
 
-    static let expectedKeyLength = 119
+    static let expectedKeyLength = 40
 
     var errorDescription: String? {
         switch self {

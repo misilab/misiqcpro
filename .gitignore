@@ -7,8 +7,13 @@
 # -------------------- SECRETS (never commit) --------------------
 scripts/output/private_key.dat
 scripts/output/sparkle_private_key.dat
+scripts/output/hmac_secret.dat
+scripts/output/hmac_secret.hex
 scripts/output/keys.csv
 scripts/output/keys.txt
+# Legacy Ed25519 backups (kept locally only)
+scripts/output/private_key-v1-ed25519-backup.dat
+scripts/output/keys-v1-ed25519-backup.csv
 
 # -------------------- Build & derived artefacts --------------------
 build/

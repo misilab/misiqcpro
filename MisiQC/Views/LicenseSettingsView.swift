@@ -26,7 +26,7 @@ struct LicenseSettingsView: View {
                               text: $draftKey,
                               axis: .vertical)
                         .textFieldStyle(.roundedBorder)
-                        .lineLimit(4...8)
+                        .lineLimit(1...3)
                         .font(.system(size: 11).monospaced())
                         .autocorrectionDisabled()
                     Button(state.t(.licenseActivateButton)) {
