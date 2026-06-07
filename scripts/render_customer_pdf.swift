@@ -91,7 +91,15 @@ func drawString(_ s: String, at point: CGPoint, font: NSFont,
         .font: font, .foregroundColor: color, .paragraphStyle: style
     ]
     if let maxWidth {
-        let rect = CGRect(x: point.x, y: point.y, width: maxWidth, height: 2000)
+        // In a non-flipped CG context, NSString.draw(in:) renders the first
+        // line at the TOP of the rect. We treat `point.y` as the desired TOP
+        // edge of the text block — so position the rect so its top edge is
+        // at point.y. That requires measuring the height first.
+        let h = (s as NSString).boundingRect(
+            with: CGSize(width: maxWidth, height: 5000),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: attrs).height.rounded(.up) + 2
+        let rect = CGRect(x: point.x, y: point.y - h, width: maxWidth, height: h)
         (s as NSString).draw(in: rect, withAttributes: attrs)
     } else {
         (s as NSString).draw(at: point, withAttributes: attrs)
@@ -266,16 +274,17 @@ func ensureSpace(_ needed: CGFloat) {
 
 func renderH2(_ text: String) {
     let font = NSFont.systemFont(ofSize: 14, weight: .heavy)
-    let h = boundsOf(text, font: font, width: contentWidth, lineHeight: 18)
-    ensureSpace(h + 18)
-    currentY -= 12
+    let lh: CGFloat = 18
+    let h = boundsOf(text, font: font, width: contentWidth - 14, lineHeight: lh)
+    ensureSpace(h + 22)
+    currentY -= 10
+    // Accent stripe on the left, full height of the heading text
     accentBlue.setFill()
-    NSBezierPath(roundedRect: CGRect(x: margin, y: currentY - 14, width: 4, height: 14),
+    NSBezierPath(roundedRect: CGRect(x: margin, y: currentY - h, width: 4, height: h),
                  xRadius: 2, yRadius: 2).fill()
-    drawString(text, at: CGPoint(x: margin + 10, y: currentY - 13),
-               font: font, color: primaryText,
-               maxWidth: contentWidth - 10)
-    currentY -= h + 4
+    drawWrapped(text, x: margin + 12, topY: currentY, width: contentWidth - 14,
+                font: font, color: primaryText, lineHeight: lh)
+    currentY -= h + 8
 }
 
 func renderP(_ text: String) {
@@ -425,7 +434,7 @@ func renderColumned(headline: String, items: [String], columns: Int) {
                    font: .systemFont(ofSize: 11, weight: .bold), color: accentBlue)
         drawString(item,
                    at: CGPoint(x: x + 8, y: y - lh + 2),
-                   font: itemFont, color: primaryText, maxWidth: colWidth - 8)
+                   font: itemFont, color: primaryText)
     }
     currentY = startY - CGFloat(perCol) * rowH - 6
 }
