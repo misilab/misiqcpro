@@ -59,6 +59,11 @@ echo "→ Setting MARKETING_VERSION=$VERSION"
 xcrun agvtool new-marketing-version "$VERSION" >/dev/null
 xcrun agvtool next-version -all >/dev/null
 
+# 1b. Regenerate the trilingual customer install guide PDF for this version.
+# Output: scripts/output/MisiQC-Pro-Guide-Installation.pdf
+echo "→ Regenerating customer install guide PDF for v$VERSION"
+swift "$PROJECT_DIR/scripts/render_customer_pdf.swift" "$VERSION" >/dev/null
+
 # 2. Archive (Release config, Developer ID signed)
 echo "→ Archiving (xcodebuild archive)…"
 xcodebuild archive \
