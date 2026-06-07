@@ -212,7 +212,7 @@ enum L10n {
         case licenseDeactivateButton, licenseBuyButton
         case licenseErrorMalformed, licenseErrorSignature
         case licenseErrorExpired, licenseErrorUnsupported
-        case licenseActivatedTitle, licenseActivatedMessage
+        case licenseActivatedTitle, licenseActivatedMessage, licenseActivatedMessageLifetime
         case licenseExpiredTitle, licenseExpiredMessage
         case licenseHost
         case licenseWatermark, licenseWatermarkTrial
@@ -1147,6 +1147,11 @@ enum L10n {
             .fr: "Merci ! Licence valide jusqu'au %@.",
             .en: "Thanks! License valid until %@.",
             .es: "¡Gracias! Licencia válida hasta %@."
+        ],
+        .licenseActivatedMessageLifetime: [
+            .fr: "Merci ! Licence à vie active.",
+            .en: "Thanks! Lifetime license active.",
+            .es: "¡Gracias! Licencia de por vida activa."
         ],
         .licenseExpiredTitle: [
             .fr: "Essai expiré",

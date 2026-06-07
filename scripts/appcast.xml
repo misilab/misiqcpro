@@ -7,6 +7,27 @@
     <language>fr</language>
 
     <item>
+      <title>Version 1.0.4</title>
+      <pubDate>Sun, 07 Jun 2026 22:15:00 +0200</pubDate>
+      <sparkle:version>8</sparkle:version>
+      <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h3>MisiQC Pro 1.0.4 — Polissage de l'écran Licence</h3>
+        <ul>
+          <li>Fenêtre Réglages agrandie (640 × 520) pour mieux afficher les clés de licence.</li>
+          <li>Bouton « Activer » placé sous le champ de saisie : le champ prend toute la largeur disponible et la clé tient confortablement sur une seule ligne.</li>
+          <li>Correction du message d'activation : « Merci ! Licence à vie active. » (au lieu du « Merci ! Licence valide jusqu'au à vie. » grammaticalement incorrect).</li>
+        </ul>
+      ]]></description>
+      <enclosure
+        url="https://github.com/misilab/misiqcpro/releases/download/v1.0.4/MisiQC-Pro-1.0.4.zip"
+        sparkle:edSignature="hiL4VHtA6J596wn+vJhOVHXC6+iuGbVDzgZu1XxsBblsxJZZru/tBUoQ96mAkBKM7oYUMu414MTqNJTigOz9BA=="
+        length="57938879"
+        type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Version 1.0.3</title>
       <pubDate>Sun, 07 Jun 2026 22:00:00 +0200</pubDate>
       <sparkle:version>7</sparkle:version>

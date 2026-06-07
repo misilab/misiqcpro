@@ -15,7 +15,7 @@ struct SettingsView: View {
             aboutTab
                 .tabItem { Label(state.t(.settingsAbout), systemImage: "info.circle") }
         }
-        .frame(width: 520, height: 420)
+        .frame(width: 640, height: 520)
     }
 
     // MARK: - General

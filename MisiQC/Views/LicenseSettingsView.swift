@@ -21,25 +21,26 @@ struct LicenseSettingsView: View {
             }
 
             Section {
-                HStack(alignment: .top, spacing: 8) {
-                    TextField(state.t(.licenseEnterKeyPlaceholder),
-                              text: $draftKey,
-                              axis: .vertical)
-                        .textFieldStyle(.roundedBorder)
-                        .lineLimit(1...3)
-                        .font(.system(size: 11).monospaced())
-                        .autocorrectionDisabled()
+                TextField(state.t(.licenseEnterKeyPlaceholder),
+                          text: $draftKey,
+                          axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+                    .lineLimit(1...3)
+                    .font(.system(size: 11).monospaced())
+                    .autocorrectionDisabled()
+                HStack {
+                    if !draftKey.isEmpty {
+                        let n = draftKey.uppercased().filter { Self.base32Chars.contains($0) }.count
+                        Text("\(n) / \(LicenseError.expectedKeyLength)")
+                            .font(.caption.monospacedDigit())
+                            .foregroundStyle(n == LicenseError.expectedKeyLength ? .green : .secondary)
+                    }
+                    Spacer()
                     Button(state.t(.licenseActivateButton)) {
                         activate()
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(draftKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                }
-                if !draftKey.isEmpty {
-                    let n = draftKey.uppercased().filter { Self.base32Chars.contains($0) }.count
-                    Text("\(n) / \(LicenseError.expectedKeyLength)")
-                        .font(.caption.monospacedDigit())
-                        .foregroundStyle(n == LicenseError.expectedKeyLength ? .green : .secondary)
                 }
                 if let msg = activationMessage {
                     Text(msg)
@@ -109,11 +110,10 @@ struct LicenseSettingsView: View {
         switch result {
         case .success(let expiry):
             activationIsError = false
-            let dateOrLifetime: String = LicenseService.isPerpetual(expiry)
-                ? state.t(.licenseExpiryLifetime)
-                : Self.shortDate(expiry)
-            activationMessage = String(format: state.t(.licenseActivatedMessage),
-                                       dateOrLifetime)
+            activationMessage = LicenseService.isPerpetual(expiry)
+                ? state.t(.licenseActivatedMessageLifetime)
+                : String(format: state.t(.licenseActivatedMessage),
+                         Self.shortDate(expiry))
             draftKey = ""
         case .failure(let err):
             activationIsError = true
