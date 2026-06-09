@@ -22,6 +22,7 @@ struct MisiQCApp: App {
                 .environment(appState)
                 .frame(minWidth: 1500, idealWidth: 1500, minHeight: 1020, idealHeight: 1020)
                 .navigationTitle("MisiQC Pro")
+                .onAppear { updater.scheduleAutoCheckAfterLaunch() }
         }
         .windowStyle(.titleBar)
         .windowToolbarStyle(.unified)

@@ -32,6 +32,19 @@ final class UpdateService: NSObject, SPUUpdaterDelegate {
         updaterController.checkForUpdates(nil)
     }
 
+    /// Fires a silent background update check 3 seconds after launch. If an
+    /// update is available Sparkle pops the standard "A new version is
+    /// available" dialog ; otherwise the call is a no-op (no nag UI). Idempotent
+    /// — repeated calls are ignored.
+    private var didRunStartupCheck = false
+    func scheduleAutoCheckAfterLaunch() {
+        guard !didRunStartupCheck else { return }
+        didRunStartupCheck = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.updaterController.updater.checkForUpdatesInBackground()
+        }
+    }
+
     // MARK: - SPUUpdaterDelegate
 
     nonisolated func feedURLString(for updater: SPUUpdater) -> String? {
@@ -56,6 +69,9 @@ final class UpdateService {
         alert.alertStyle = .informational
         alert.runModal()
     }
+
+    /// No-op stub matching the Sparkle-enabled API.
+    func scheduleAutoCheckAfterLaunch() {}
 }
 
 #endif
