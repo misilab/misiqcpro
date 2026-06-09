@@ -7,6 +7,27 @@
     <language>fr</language>
 
     <item>
+      <title>Version 1.0.5</title>
+      <pubDate>Mon, 09 Jun 2026 09:30:00 +0200</pubDate>
+      <sparkle:version>10</sparkle:version>
+      <sparkle:shortVersionString>1.0.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h3>MisiQC Pro 1.0.5 — Installateur .pkg avec EULA & vérification de mise à jour automatique</h3>
+        <ul>
+          <li>Nouveau : installateur .pkg signé Misilab avec écran d'acceptation de licence trilingue (FR / EN / ES) — alternative au DMG drag-and-drop, plus familière pour les utilisateurs venant de Windows.</li>
+          <li>Vérification des mises à jour automatique 3 secondes après le lancement (silencieuse — n'affiche un dialogue que si une mise à jour est disponible).</li>
+          <li>Manuel utilisateur PDF complet (FR / EN / ES, ~78 pages) téléchargeable depuis la page GitHub Releases ou Payhip.</li>
+        </ul>
+      ]]></description>
+      <enclosure
+        url="https://github.com/misilab/misiqcpro/releases/download/v1.0.5/MisiQC-Pro-1.0.5.zip"
+        sparkle:edSignature="+GS0dW1szlRv7kiWaR79nOO1EGyqOLeEqSa+EyIOZ2HIyVnMA8EvyFMg4yWrZiBa/TTBbgM+CpmGs1nWpJveAQ=="
+        length="57941078"
+        type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Version 1.0.4</title>
       <pubDate>Sun, 07 Jun 2026 22:15:00 +0200</pubDate>
       <sparkle:version>8</sparkle:version>
