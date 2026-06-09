@@ -161,6 +161,24 @@ xcrun notarytool submit "$DMG_PATH" --keychain-profile "$NOTARY_PROFILE" --wait
 xcrun stapler staple "$DMG_PATH"
 xcrun stapler validate "$DMG_PATH"
 
+# 7c. Component .pkg installer (Installer.app wizard — no drag and drop)
+#     Signed with Developer ID Installer, notarised and stapled.
+INSTALLER_CERT="Developer ID Installer: matthieu misiraca (SM6L2XLUBA)"
+PKG_PATH="$RELEASE_DIR/MisiQC-Pro-$VERSION.pkg"
+echo "→ Creating signed PKG installer"
+rm -f "$PKG_PATH"
+pkgbuild \
+  --component "$DIST_APP_PATH" \
+  --identifier "fr.misilab.MisiQCPro.pkg" \
+  --version "$VERSION" \
+  --install-location "/Applications" \
+  --sign "$INSTALLER_CERT" \
+  "$PKG_PATH"
+echo "→ Submitting PKG for notarization (5-10 min)…"
+xcrun notarytool submit "$PKG_PATH" --keychain-profile "$NOTARY_PROFILE" --wait
+xcrun stapler staple "$PKG_PATH"
+xcrun stapler validate "$PKG_PATH"
+
 # 8. Sparkle signature — use our own script so we don't depend on Sparkle
 #    being installed. The private key lives in scripts/output/.
 if [[ -f "scripts/output/sparkle_private_key.dat" ]]; then
@@ -178,12 +196,19 @@ ZIP_SIZE=$(stat -f%z "$ZIP_PATH")
 ZIP_SHA=$(shasum -a 256 "$ZIP_PATH" | awk '{print $1}')
 DMG_SIZE=$(stat -f%z "$DMG_PATH")
 DMG_SHA=$(shasum -a 256 "$DMG_PATH" | awk '{print $1}')
+PKG_SIZE=$(stat -f%z "$PKG_PATH")
+PKG_SHA=$(shasum -a 256 "$PKG_PATH" | awk '{print $1}')
 
 echo ""
 echo "============================================================"
 echo "✅ Release $VERSION ready."
 echo ""
-echo "  DMG (for Payhip customer download):"
+echo "  PKG (Installer.app wizard, best UX for non-Mac users):"
+echo "    File:    $PKG_PATH"
+echo "    Size:    $PKG_SIZE bytes"
+echo "    SHA-256: $PKG_SHA"
+echo ""
+echo "  DMG (drag-and-drop, Mac-native UX):"
 echo "    File:    $DMG_PATH"
 echo "    Size:    $DMG_SIZE bytes"
 echo "    SHA-256: $DMG_SHA"
@@ -194,8 +219,8 @@ echo "    Size:    $ZIP_SIZE bytes"
 echo "    SHA-256: $ZIP_SHA"
 echo ""
 echo "Next steps:"
-echo "  • Upload $DMG_PATH to Payhip → Product → Files"
+echo "  • Upload $PKG_PATH and $DMG_PATH to Payhip → Product → Files"
 echo "  • Upload scripts/output/keys.csv to Payhip → Product → License Keys (one-time)"
-echo "  • Upload scripts/output/MisiQC-Pro-Guide-Installation.pdf alongside the DMG"
+echo "  • Upload scripts/output/MisiQC-Pro-Manuel.pdf alongside the DMG"
 echo "  • (Sparkle) Add a new <item> to appcast.xml pointing at the ZIP with $ZIP_SHA"
 echo "============================================================"
