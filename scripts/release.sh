@@ -161,19 +161,38 @@ xcrun notarytool submit "$DMG_PATH" --keychain-profile "$NOTARY_PROFILE" --wait
 xcrun stapler staple "$DMG_PATH"
 xcrun stapler validate "$DMG_PATH"
 
-# 7c. Component .pkg installer (Installer.app wizard — no drag and drop)
-#     Signed with Developer ID Installer, notarised and stapled.
+# 7c. .pkg installer (Installer.app wizard with multilingual EULA acceptance —
+#     no drag and drop). Built via pkgbuild (component) + productbuild
+#     (distribution with FR/EN/ES license screen), signed with Developer ID
+#     Installer, notarised and stapled.
 INSTALLER_CERT="Developer ID Installer: matthieu misiraca (SM6L2XLUBA)"
 PKG_PATH="$RELEASE_DIR/MisiQC-Pro-$VERSION.pkg"
-echo "→ Creating signed PKG installer"
-rm -f "$PKG_PATH"
+COMPONENT_PKG="/tmp/MisiQC-Pro-component-$VERSION.pkg"
+DIST_XML="/tmp/MisiQC-Pro-distribution-$VERSION.xml"
+echo "→ Building component pkg"
+rm -f "$PKG_PATH" "$COMPONENT_PKG" "$DIST_XML"
 pkgbuild \
   --component "$DIST_APP_PATH" \
   --identifier "fr.misilab.MisiQCPro.pkg" \
   --version "$VERSION" \
   --install-location "/Applications" \
+  "$COMPONENT_PKG"
+
+echo "→ Generating distribution.xml (EULA + UI)"
+sed "s/__VERSION__/$VERSION/g" \
+    "$PROJECT_DIR/scripts/eula/distribution.xml.template" > "$DIST_XML"
+# pkg-ref must point to the actual component file we just produced
+sed -i '' "s|MisiQC-Pro-component.pkg|$(basename "$COMPONENT_PKG")|g" "$DIST_XML"
+
+echo "→ Building signed distribution pkg with EULA"
+productbuild \
+  --distribution "$DIST_XML" \
+  --package-path "$(dirname "$COMPONENT_PKG")" \
+  --resources "$PROJECT_DIR/scripts/eula/Resources" \
   --sign "$INSTALLER_CERT" \
   "$PKG_PATH"
+rm -f "$COMPONENT_PKG" "$DIST_XML"
+
 echo "→ Submitting PKG for notarization (5-10 min)…"
 xcrun notarytool submit "$PKG_PATH" --keychain-profile "$NOTARY_PROFILE" --wait
 xcrun stapler staple "$PKG_PATH"

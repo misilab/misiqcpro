@@ -1,0 +1,97 @@
+CONTRAT DE LICENCE UTILISATEUR FINAL — MisiQC Pro
+
+Éditeur : Misilab
+Site : https://misiqc.pro
+Contact : contact@misiraca.com
+
+Le présent contrat (« Contrat ») régit l'utilisation du logiciel MisiQC Pro
+(« Logiciel »), édité par Misilab. En cliquant sur « Accepter », en installant
+ou en utilisant le Logiciel, vous (« Licencié ») reconnaissez avoir lu et
+accepté l'intégralité des clauses ci-dessous. Si vous refusez ces clauses,
+n'installez pas le Logiciel.
+
+
+1. OCTROI DE LICENCE
+
+Misilab vous concède une licence personnelle, non exclusive, non transférable
+et à vie pour utiliser le Logiciel à des fins personnelles et professionnelles
+sur tous les ordinateurs Mac vous appartenant ou que vous utilisez à titre
+exclusif. Une clé d'activation unique vous est fournie ; sa validation est
+effectuée hors-ligne sur votre machine.
+
+
+2. UTILISATIONS AUTORISÉES
+
+Vous pouvez : installer et exécuter le Logiciel sur vos Macs personnels ou
+professionnels ; analyser un nombre illimité de fichiers PAD ; générer un
+nombre illimité de rapports PDF, exports CSV et guides de correction ;
+recevoir gratuitement à vie les mises à jour majeures et mineures.
+
+
+3. RESTRICTIONS
+
+Il vous est strictement interdit de : revendre, partager, distribuer, prêter
+ou céder votre clé d'activation à un tiers ; modifier, désassembler, décompiler
+ou rétro-ingénier tout ou partie du Logiciel ; supprimer ou altérer les
+filigranes (watermarks) apposés sur les rapports PDF générés ; contourner ou
+neutraliser la vérification de licence ; utiliser le Logiciel pour des
+activités illégales ou contraires aux bonnes pratiques de l'industrie
+broadcast.
+
+
+4. PROPRIÉTÉ INTELLECTUELLE
+
+Le Logiciel, son code source, son interface, sa documentation et l'ensemble
+des éléments graphiques sont la propriété exclusive de Misilab et sont
+protégés par les lois françaises et internationales en vigueur sur la
+propriété intellectuelle. Aucune disposition du présent Contrat ne saurait
+être interprétée comme un transfert de propriété au profit du Licencié.
+
+
+5. TRAÇABILITÉ
+
+Le Licencié reconnaît et accepte que chaque rapport PDF généré par le
+Logiciel comporte en pied de page un filigrane discret reproduisant le nom
+de la machine ainsi que les cinq premiers caractères de la clé d'activation.
+Cet identifiant permet à Misilab de tracer une éventuelle utilisation non
+autorisée de la clé.
+
+
+6. MISES À JOUR
+
+Misilab pourra publier des mises à jour du Logiciel sans préavis. Le
+mécanisme de mise à jour intégré (Sparkle) télécharge et installe ces
+versions de manière sécurisée à partir des serveurs de Misilab. Les mises
+à jour sont incluses dans la licence à vie.
+
+
+7. GARANTIES — LIMITATIONS DE RESPONSABILITÉ
+
+Le Logiciel est fourni « en l'état », sans aucune garantie expresse ou
+implicite, notamment de qualité marchande, d'adéquation à un usage
+particulier ou d'absence de défauts. Misilab ne pourra en aucun cas être
+tenue responsable de tout dommage direct, indirect, accessoire ou
+consécutif résultant de l'utilisation ou de l'impossibilité d'utilisation
+du Logiciel, y compris la perte de données ou le rejet d'une livraison
+par un diffuseur.
+
+
+8. RÉSILIATION
+
+Misilab peut résilier de plein droit la présente licence en cas de
+violation manifeste de l'une des clauses ci-dessus, notamment en cas de
+partage non autorisé de la clé. La résiliation entraîne la révocation
+immédiate de la clé et l'interdiction d'utiliser le Logiciel.
+
+
+9. DROIT APPLICABLE
+
+Le présent Contrat est régi par le droit français. Tout litige relatif à
+son interprétation ou à son exécution relèvera de la compétence exclusive
+des tribunaux français.
+
+
+En cliquant sur « Accepter », vous confirmez avoir pris connaissance de
+l'intégralité de ce Contrat et vous engagez à en respecter les termes.
+
+— Misilab, éditeur de MisiQC Pro

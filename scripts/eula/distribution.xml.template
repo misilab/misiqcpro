@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="2">
+    <title>MisiQC Pro</title>
+    <organization>fr.misilab.MisiQCPro</organization>
+    <license file="License.txt" mime-type="text/plain"/>
+
+    <!-- Hardware/OS constraints -->
+    <volume-check>
+        <allowed-os-versions>
+            <os-version min="14.0"/>
+        </allowed-os-versions>
+    </volume-check>
+    <options customize="never" require-scripts="false" rootVolumeOnly="true"/>
+
+    <!-- Visible install hierarchy -->
+    <choices-outline>
+        <line choice="default">
+            <line choice="fr.misilab.MisiQCPro.pkg"/>
+        </line>
+    </choices-outline>
+    <choice id="default" title="MisiQC Pro"/>
+    <choice id="fr.misilab.MisiQCPro.pkg" visible="false">
+        <pkg-ref id="fr.misilab.MisiQCPro.pkg"/>
+    </choice>
+
+    <!-- Pkg ref filled in at build time -->
+    <pkg-ref id="fr.misilab.MisiQCPro.pkg"
+             version="__VERSION__"
+             onConclusion="none">MisiQC-Pro-component.pkg</pkg-ref>
+</installer-gui-script>
