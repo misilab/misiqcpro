@@ -7,6 +7,28 @@
     <language>fr</language>
 
     <item>
+      <title>Version 1.0.6</title>
+      <pubDate>Mon, 09 Jun 2026 10:30:00 +0200</pubDate>
+      <sparkle:version>12</sparkle:version>
+      <sparkle:shortVersionString>1.0.6</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h3>MisiQC Pro 1.0.6 — Audit & corrections</h3>
+        <ul>
+          <li>Synchronisation automatique de la variante audio quand on change de profil chaîne : si la nouvelle chaîne ne déclare pas la variante précédemment sélectionnée, MisiQC Pro bascule sur la première variante autorisée. Évite les analyses lancées avec un mapping audio incompatible avec la spec.</li>
+          <li>Guide de correction PDF : correction d'un offset de quelques pixels sur les libellés tronqués (texte qui se positionnait légèrement plus haut que prévu).</li>
+          <li>Pipeline de release : validation du format de version (X.Y.Z) pour échouer tôt au lieu de planter dans xcodebuild.</li>
+          <li>Manuel utilisateur PDF regénéré pour 1.0.6 (FR / EN / ES, 78 pages).</li>
+        </ul>
+      ]]></description>
+      <enclosure
+        url="https://github.com/misilab/misiqcpro/releases/download/v1.0.6/MisiQC-Pro-1.0.6.zip"
+        sparkle:edSignature="qglKENqfs7IxuFQhE6XbumyAkXj4aQE3J5afJzwcHecGN6H3E3z3rgu/zY4Mvj5cSdwYbYIrkR2aG0hRZEcHCw=="
+        length="57940416"
+        type="application/octet-stream" />
+    </item>
+
+    <item>
       <title>Version 1.0.5</title>
       <pubDate>Mon, 09 Jun 2026 09:30:00 +0200</pubDate>
       <sparkle:version>10</sparkle:version>
