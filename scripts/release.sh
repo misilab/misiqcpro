@@ -28,6 +28,10 @@ if [[ -z "$VERSION" ]]; then
   echo "Example: $0 1.0.0"
   exit 1
 fi
+if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  echo "Error: version must be in X.Y.Z format (got: $VERSION)"
+  exit 1
+fi
 
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJECT_DIR"

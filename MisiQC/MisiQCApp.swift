@@ -77,10 +77,9 @@ struct MisiQCApp: App {
             CommandMenu(appState.t(.menuProfile)) {
                 ForEach(Array(appState.availableSpecs.enumerated()), id: \.element.id) { idx, spec in
                     let button = Button(spec.name) {
+                        // AppState.selectedSpec.didSet auto-reconciles the
+                        // variant when the new spec doesn't allow the current one.
                         appState.selectedSpec = spec
-                        if !appState.availableVariants.contains(appState.selectedVariant) {
-                            appState.selectedVariant = appState.availableVariants.first ?? .vfOnly
-                        }
                     }
                     if idx < 9 {
                         button.keyboardShortcut(

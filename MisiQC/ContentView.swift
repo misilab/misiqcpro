@@ -98,10 +98,9 @@ struct ContentView: View {
                                         spec: spec,
                                         isSelected: state.selectedSpec?.id == spec.id
                                     ) {
+                                        // AppState.selectedSpec.didSet handles
+                                        // variant reconciliation automatically.
                                         state.selectedSpec = spec
-                                        if !state.availableVariants.contains(state.selectedVariant) {
-                                            state.selectedVariant = state.availableVariants.first ?? .vfOnly
-                                        }
                                     }
                                 }
                             }

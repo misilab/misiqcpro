@@ -10,9 +10,20 @@ final class AppState {
     // MARK: - Session state
 
     var availableSpecs: [ChannelSpec] = []
-    var selectedSpec: ChannelSpec?
+    /// Currently selected channel profile. When it changes, `selectedVariant`
+    /// is automatically pulled back into the new spec's available variants so
+    /// the UI never holds onto a variant the profile does not declare.
+    var selectedSpec: ChannelSpec? {
+        didSet { ensureVariantIsValid() }
+    }
     var selectedVariant: VersionVariant = .vfOnly
     var droppedFile: URL?
+
+    private func ensureVariantIsValid() {
+        let allowed = availableVariants
+        guard !allowed.contains(selectedVariant) else { return }
+        selectedVariant = allowed.first ?? .vfOnly
+    }
 
     var isAnalyzing: Bool = false
     var currentStage: QCEngine.Stage?
@@ -74,6 +85,9 @@ final class AppState {
         self.selectedSpec = availableSpecs.first { $0.id == savedProfile }
             ?? availableSpecs.first
         self.selectedVariant = savedVariant
+        // didSet doesn't fire during init, so reconcile the variant explicitly
+        // (e.g. if a saved variant is no longer declared by the saved profile).
+        ensureVariantIsValid()
     }
 
     // MARK: - Computed

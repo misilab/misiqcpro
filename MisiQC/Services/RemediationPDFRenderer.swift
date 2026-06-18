@@ -322,7 +322,12 @@ enum RemediationPDFRenderer {
             let attrs: [NSAttributedString.Key: Any] = [
                 .font: font, .foregroundColor: color, .paragraphStyle: style
             ]
-            let rect = CGRect(x: point.x, y: point.y, width: maxWidth, height: font.pointSize + 4)
+            // In a non-flipped CG context, NSString.draw(in:) renders the line
+            // at the TOP of the rect. We treat point.y as the desired text TOP,
+            // so position rect.y = point.y - height (same fix applied earlier
+            // to scripts/render_customer_pdf.swift).
+            let h = font.pointSize + 4
+            let rect = CGRect(x: point.x, y: point.y - h, width: maxWidth, height: h)
             (s as NSString).draw(in: rect, withAttributes: attrs)
         } else {
             let attrs: [NSAttributedString.Key: Any] = [
